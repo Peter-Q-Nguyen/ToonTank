@@ -78,5 +78,5 @@ void APawnTank::HandleDestruction()
 	Super::HandleDestruction();
 	// TODOHide player 
 
-	Destroy();
+	//Destroy();
 }
