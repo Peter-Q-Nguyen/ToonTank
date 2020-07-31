@@ -46,14 +46,16 @@ void ATankGameModeBase::HandleGameStart()
 {
 	//initialise start countdown, turret activation, pawn check
 	//call blueprint game start
+
+	TargetTurrets = GetTargetTurretCount();
+	PlayerTank = Cast<APawnTank>(UGameplayStatics::GetPlayerPawn(this, 0));
 	GameStart();
 
 }
 
 void ATankGameModeBase::HandleGameOver(bool PlayerWon)
 {
-	TargetTurrets = GetTargetTurretCount();
-	PlayerTank = Cast<APawnTank>(UGameplayStatics::GetPlayerPawn(this, 0));
+
 	GameOver(PlayerWon);
 }
 

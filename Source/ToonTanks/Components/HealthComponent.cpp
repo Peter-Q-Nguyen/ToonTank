@@ -41,8 +41,10 @@ void UHealthComponent::TakeDamage(AActor* DamagedActor, float Damage, const UDam
 
 	if (Health <= 0)
 	{
+
 		if (GameModeRef)
 		{
+			UE_LOG(LogTemp, Warning, TEXT("Triggering ActorDied"));
 			GameModeRef->ActorDied(GetOwner());
 		}
 		else
