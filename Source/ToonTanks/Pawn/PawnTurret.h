@@ -23,6 +23,9 @@ private:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Combat", meta = (AllowPrivateAccess = "true"))
 	float FireRange = 500.0f;
 
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Score", meta = (AllowPrivateAccess = "true"))
+	int32 PointsValue = 10;
+
 	FTimerHandle FireRateTimerHandle;
 	APawnTank* PlayerPawn;
 
@@ -38,6 +41,10 @@ public:
 	virtual void Tick(float DeltaTime) override;
 
 	virtual void HandleDestruction() override;
+
+	int32 GetPoints() {
+		return PointsValue;
+	}
 
 protected:
 	// Called when the game starts or when spawned

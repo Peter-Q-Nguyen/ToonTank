@@ -32,6 +32,8 @@ void ATankGameModeBase::ActorDied(AActor* DeadActor)
 	else if (APawnTurret * DestroyedTurret = Cast<APawnTurret>(DeadActor))
 	{
 		DestroyedTurret->HandleDestruction();
+		PlayerScore += DestroyedTurret->GetPoints();
+		SetScore(PlayerScore);
 
 		if (--TargetTurrets == 0)
 		{
@@ -58,6 +60,7 @@ void ATankGameModeBase::HandleGameStart()
 	PlayerControllerRef = Cast<APlayerControllerBase>(UGameplayStatics::GetPlayerController(this, 0));
 
 	GameStart();
+	CreateScore();
 	if (PlayerControllerRef)
 	{
 		PlayerControllerRef->SetPlayerEnabledState(false);
