@@ -30,6 +30,9 @@ private:
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Damage", meta = (AllowPrivateAccess = "true"))
 	float Damage = 50;
 
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Damage", meta = (AllowPrivateAccess = "true"))
+	float ProjectileScale = 1.0f;
+
 	//FUNCTIONS
 	UFUNCTION()
 	void OnHit(UPrimitiveComponent* HitComponent, AActor* OtherActor, UPrimitiveComponent* OtherComp, FVector NormalImpulse, const FHitResult& Hit);
@@ -46,6 +49,8 @@ private:
 public:	
 	// Sets default values for this actor's properties
 	AProjectileBase();
+
+	void SetScale(float ProjectileScale);
 
 protected:
 	// Called when the game starts or when spawned

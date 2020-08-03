@@ -28,6 +28,18 @@ AProjectileBase::AProjectileBase()
 	InitialLifeSpan = 3.0f;
 }
 
+void AProjectileBase::SetScale(float NewScale)
+{
+	FTransform Transform = ProjectileMesh->GetComponentTransform();
+	Transform.SetScale3D(FVector(NewScale));
+
+	ProjectileMesh->SetWorldTransform(Transform);
+	//if (ParticleTrail)
+	//{
+	//	ParticleTrail->SetWorldScale3D(FVector(NewScale));
+	//}
+}
+
 // Called when the game starts or when spawned
 void AProjectileBase::BeginPlay()
 {

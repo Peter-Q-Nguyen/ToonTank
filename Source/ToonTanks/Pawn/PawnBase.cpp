@@ -43,7 +43,9 @@ void APawnBase::Fire()
 	// GetProjectileSpawnPoint Location && Rotation -> Spawn Projectile class at Location firing towards Rotation.
 	if (ProjectileClass)
 	{
-		AProjectileBase* TempProjectile = GetWorld()->SpawnActor<AProjectileBase>(ProjectileClass,ProjectileSpawnPoint->GetComponentLocation(), ProjectileSpawnPoint->GetComponentRotation() );
+		FActorSpawnParameters SpawnParameters;
+		AProjectileBase* TempProjectile = GetWorld()->SpawnActor<AProjectileBase>(ProjectileClass,ProjectileSpawnPoint->GetComponentLocation(), ProjectileSpawnPoint->GetComponentRotation());
+		TempProjectile->SetScale(RootComponent->GetComponentScale().X);
 		TempProjectile->SetOwner(this);
 	}
 }
